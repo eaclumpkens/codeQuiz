@@ -1,28 +1,56 @@
 * {
     text-align: center;
     font-size: 20px;
-    background: #D79922;
-    color: #EFE2BA;
     font-family:'Open Sans', sans-serif;
 }
 
 h1 {
-    font-weight: 700;
+    font-weight: 800;
 }
+
+h2 {
+    font-weight: 700;
+    text-align: left;
+}
+
+h3 {
+    text-align: left;
+    font-weight: 300;
+    font-size: 1.6rem;
+    padding: 1.6rem;
+}
+
+/* BODY STYLIZATION */
 
 p {
     font-weight: 300;
 }
 
 .container-fluid {
-    PADDING: 15% 30% 10% 30%;
+    padding: 13% 30% 25% 30%;
 }
 
+/* ANSWER STYLIZATION */
+
+.btn-secondary {
+    background: #D79922;
+    border-color:#EFE2BA;
+    color: #EFE2BA;
+}
+
+.btn-secondary:hover {
+    background: #EFE2BA;
+    border-color:#EFE2BA;
+    color: #D79922;
+}
+
+/* BUTTON STYLIZATION */
 
 .btn-primary {
     background: #EFE2BA; 
     border-color: #EFE2BA;
     color: #D79922;
+    padding: 1rem;
 }
 
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
