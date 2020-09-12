@@ -82,26 +82,26 @@ function checkAnswer(answerChoice, correctAnswer) {
 //     return
 // }
 
-// function gameOver() {
-//     stopTimer();
-//     answerEl.remove();
+function gameOver() {
+    stopTimer();
+    answerEl.remove();
     
-//     questionNum.textContent = "Game Over";
-//     questionEl.textContent = `Final Score: ${score}`;
+    questionNum.textContent = "Game Over";
+    questionEl.textContent = `Final Score: ${score}`;
 
-//     var scoreDiv = document.createElement("div");
-//     scoreDiv.classList.add("row");
-//     containerEl.append(scoreDiv);
+    // var scoreDiv = document.createElement("div");
+    // scoreDiv.classList.add("row");
+    // containerEl.append(scoreDiv);
 
-//     var nameInput = document.createElement("input");
-//     var scoreDisplay = document.createElement("h4");
-//     nameInput.classList.add("col-md-10");
-//     scoreDisplay.classList.add("col-md-2");
-//     scoreDiv.append(nameInput);
-//     scoreDiv.append(scoreDisplay);
+    // var nameInput = document.createElement("input");
+    // var scoreDisplay = document.createElement("h4");
+    // nameInput.classList.add("col-md-10");
+    // scoreDisplay.classList.add("col-md-2");
+    // scoreDiv.append(nameInput);
+    // scoreDiv.append(scoreDisplay);
 
-//     scoreDisplay.textContent = score;
-// }
+    // scoreDisplay.textContent = score;
+}
 
 function quizBackground() {
     var color1 = "#D79922"
