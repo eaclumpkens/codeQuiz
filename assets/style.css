@@ -6,6 +6,7 @@
 
 h1 {
     font-weight: 800;
+    letter-spacing: 0.2rem;
 }
 
 h2 {
@@ -32,13 +33,13 @@ p {
 
 /* ANSWER STYLIZATION */
 
-.btn-secondary {
+.btn-choice {
     background: #D79922;
     border-color:#EFE2BA;
     color: #EFE2BA;
 }
 
-.btn-secondary:hover {
+.btn-choice:hover {
     background: #EFE2BA;
     border-color:#EFE2BA;
     color: #D79922;
