@@ -1,4 +1,5 @@
 var backStatus = quizBody.dataset.status;
+var containerEl = document.querySelector(".container-fluid");
 
 var questionNum = document.querySelector("#question-number");
 var questionEl = document.querySelector("#question");
@@ -12,6 +13,7 @@ var secondsDisplay = document.querySelector("#seconds");
 
 var totalSeconds = 60;
 var secondsElapsed = 0;
+var interval;
 
 
 var questions = [
@@ -30,11 +32,6 @@ var questions = [
         "choices": ["Version Control","Code Editor","Collaboration", "Professional Portfolio"],
         "correct": "Code Editor"
     }];
-
-
-
-
-
 
 // QUIZ FUNCTIONALITY
 
@@ -76,9 +73,35 @@ function checkAnswer(answerChoice, correctAnswer) {
     } else {
         score++;
     }
-    console.log(score);
+    console.log(`Score: ${score}`);
     nextQuestion();
 }
+
+// function storeLocal() {
+
+//     return
+// }
+
+// function gameOver() {
+//     stopTimer();
+//     answerEl.remove();
+    
+//     questionNum.textContent = "Game Over";
+//     questionEl.textContent = `Final Score: ${score}`;
+
+//     var scoreDiv = document.createElement("div");
+//     scoreDiv.classList.add("row");
+//     containerEl.append(scoreDiv);
+
+//     var nameInput = document.createElement("input");
+//     var scoreDisplay = document.createElement("h4");
+//     nameInput.classList.add("col-md-10");
+//     scoreDisplay.classList.add("col-md-2");
+//     scoreDiv.append(nameInput);
+//     scoreDiv.append(scoreDisplay);
+
+//     scoreDisplay.textContent = score;
+// }
 
 function quizBackground() {
     var color1 = "#D79922"
@@ -97,6 +120,8 @@ function startQuiz() {
     renderQuestion();
     startTimer();
 }
+
+// CALL FUNCTIONS
 
 quizBackground();
 startQuiz();
@@ -127,17 +152,12 @@ function setMinutes() {
     }
     return formattedSeconds;
   }
-
-  function gameOver() {
-
-  }
   
   function renderTime() {
     minutesDisplay.textContent = setMinutes();
     secondsDisplay.textContent = setSeconds();
   
     if (secondsElapsed >= totalSeconds) {
-        // alert("Time's Up!");
         gameOver();
     }
   }
@@ -148,13 +168,15 @@ function setMinutes() {
         secondsElapsed++;
         renderTime();
       }, 1000)
-    } else {
-        gameOver();
     }
   }
 
-//   EVENT LISTENERS
+  function stopTimer() {
+    clearInterval(interval);
+    renderTime();
+  }
 
+//   EVENT LISTENER
 answerEl.addEventListener("click", function(event) {   
     var answerChoice = event.target.textContent
     var correctAnswer = questions[currentQuestion]["correct"];
