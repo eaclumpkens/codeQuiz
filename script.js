@@ -82,6 +82,7 @@ function checkAnswer(answerChoice, correctAnswer) {
 //     return
 // }
 
+
 function gameOver() {
     stopTimer();
     answerEl.remove();
@@ -89,18 +90,32 @@ function gameOver() {
     questionNum.textContent = "Game Over";
     questionEl.textContent = `Final Score: ${score}`;
 
-    // var scoreDiv = document.createElement("div");
-    // scoreDiv.classList.add("row");
-    // containerEl.append(scoreDiv);
+    var initialsDiv = document.createElement("div");
+    var initialsHead = document.createElement("p");
 
-    // var nameInput = document.createElement("input");
-    // var scoreDisplay = document.createElement("h4");
-    // nameInput.classList.add("col-md-10");
-    // scoreDisplay.classList.add("col-md-2");
-    // scoreDiv.append(nameInput);
-    // scoreDiv.append(scoreDisplay);
+    initialsDiv.classList.add("row");
+    initialsHead.classList.add("col-md-12");
+    initialsHead.setAttribute("id", "initials-head");
+    containerEl.append(initialsDiv);
+    initialsDiv.append(initialsHead);
 
-    // scoreDisplay.textContent = score;
+    initialsHead.textContent = "Input your initials below to save you score.";
+
+    var scoreDiv = document.createElement("div");
+
+    scoreDiv.classList.add("row");
+    initialsDiv.append(scoreDiv);
+
+    var nameInput = document.createElement("input");
+    var scoreDisplay = document.createElement("h4");
+
+    nameInput.classList.add("col-md-10");
+    nameInput.setAttribute("id", "initials-input");
+    scoreDisplay.classList.add("col-md-2");
+    scoreDiv.append(nameInput);
+    scoreDiv.append(scoreDisplay);
+
+    scoreDisplay.textContent = score;
 }
 
 function quizBackground() {
