@@ -1,4 +1,6 @@
 var backStatus = quizBody.dataset.status;
+var bodyEl = document.body;
+var scriptEl = document.querySelector("script");
 var containerEl = document.querySelector(".container-fluid");
 
 var questionNum = document.querySelector("#question-number");
@@ -14,6 +16,7 @@ var secondsDisplay = document.querySelector("#seconds");
 var totalSeconds = 60;
 var secondsElapsed = 0;
 var interval;
+var initials;
 
 
 var questions = [
@@ -77,46 +80,101 @@ function checkAnswer(answerChoice, correctAnswer) {
     nextQuestion();
 }
 
-// function storeLocal() {
+function getPreviousScore() {
+    var scoreData = JSON.parse(localStorage.getItem("scoreData"));
 
-//     return
-// }
+    if (scoreData) {
+        if (scoreData.previousInitials) {
+            prevName.textContent = "Previous Score: " + scoreData.previousInitials;
+        }
 
+        if (scoreData.previousScore) {
+            prevScore.textContent = scoreData.previousScore;
+        }
+    } else {
+        prevName.textContent = "no data";
+        prevScore.textContent = "-";
+    }
+}
+
+function setPreviousScore() {
+    localStorage.setItem(
+        "scoreData",
+        JSON.stringify({
+            previousInitials: initials.value.trim(),
+            previousScore: score
+        })
+    );
+}
 
 function gameOver() {
-    stopTimer();
-    answerEl.remove();
-    
-    questionNum.textContent = "Game Over";
-    questionEl.textContent = `Final Score: ${score}`;
+    clearInterval(interval);
+    containerEl.remove();
 
-    var initialsDiv = document.createElement("div");
-    var initialsHead = document.createElement("p");
-
-    initialsDiv.classList.add("row");
-    initialsHead.classList.add("col-md-12");
-    initialsHead.setAttribute("id", "initials-head");
-    containerEl.append(initialsDiv);
-    initialsDiv.append(initialsHead);
-
-    initialsHead.textContent = "Input your initials below to save you score.";
+    // MODAL BUTTON ELEMENTS
+    var newCont = document.createElement("main");
+    newCont.classList.add("container-fluid");
+    bodyEl.insertBefore(newCont,scriptEl);
 
     var scoreDiv = document.createElement("div");
-
     scoreDiv.classList.add("row");
-    initialsDiv.append(scoreDiv);
+    newCont.appendChild(scoreDiv);
 
-    var nameInput = document.createElement("input");
-    var scoreDisplay = document.createElement("h4");
+    var finalText = document.createElement("h2");
+    var finalScore = document.createElement("h3");
+    finalText.classList.add("col-md-6");
+    finalScore.classList.add("col-md-6");
+    finalText.textContent = "GAME OVER";
+    finalScore.textContent = `Final Score: ${score}`;
 
-    nameInput.classList.add("col-md-10");
-    nameInput.setAttribute("id", "initials-input");
-    scoreDisplay.classList.add("col-md-2");
-    scoreDiv.append(nameInput);
-    scoreDiv.append(scoreDisplay);
+    scoreDiv.appendChild(finalText);
+    scoreDiv.appendChild(finalScore);
 
-    scoreDisplay.textContent = score;
+    var buttonDiv = document.createElement("div");
+    buttonDiv.classList.add("row");
+    newCont.append(buttonDiv);
+
+    var buttonEl = document.createElement("button");
+    buttonEl.setAttribute("type", "button");
+    buttonEl.classList.add("btn", "btn-warning", "col-md-12");
+    buttonEl.setAttribute("href", "");
+    buttonEl.textContent = "Submit Score";
+
+    buttonDiv.appendChild(buttonEl);
+
+    buttonDiv.addEventListener("click", function() {
+        
+        buttonDiv.remove()
+        
+        var initDiv = document.createElement("div");
+        initDiv.classList.add("row");
+        newCont.append(initDiv);
+
+        var space1 = document.createElement("div");
+        var space2 = document.createElement("div");
+        space1.classList.add("col-md-4");
+        space2.classList.add("col-md-4");
+
+        initials = document.createElement("input");
+        initials.classList.add("col-md-4");
+        initials.setAttribute("type", "text");
+        initials.setAttribute("id", "name");
+        initials.setAttribute("name", "user-initials");
+        initials.setAttribute("minlength", "1");
+        initials.setAttribute("maxlength", "3");
+        initials.setAttribute("placeholder", "Input Initials");
+
+        initDiv.appendChild(space1);
+        initDiv.appendChild(initials);
+        initDiv.appendChild(space2);
+
+        initials.addEventListener("keyup", setPreviousScore);
+        initials.addEventListener("change", setPreviousScore);
+
+    });
+
 }
+
 
 function quizBackground() {
     var color1 = "#D79922"
@@ -186,11 +244,6 @@ function setMinutes() {
     }
   }
 
-  function stopTimer() {
-    clearInterval(interval);
-    renderTime();
-  }
-
 //   EVENT LISTENER
 answerEl.addEventListener("click", function(event) {   
     var answerChoice = event.target.textContent
@@ -199,3 +252,5 @@ answerEl.addEventListener("click", function(event) {
     console.log(answerChoice);
     checkAnswer(answerChoice, correctAnswer);
 })
+
+
