@@ -82,20 +82,20 @@ function checkAnswer(answerChoice, correctAnswer) {
     nextQuestion();
 }
 
-function getPreviousScore(x,y) {
+function getPreviousScore() {
     var scoreData = JSON.parse(localStorage.getItem("scoreData"));
 
     if (scoreData) {
         if (scoreData.previousInitials) {
-            x.textContent = "Previous Score: " + scoreData.previousInitials;
+            prevInit.textContent = "Previous Score: " + scoreData.previousInitials;
         }
 
         if (scoreData.previousScore) {
-            y.textContent = scoreData.previousScore;
+            prevScore.textContent = scoreData.previousScore;
         }
     } else {
-        x.textContent = "no data";
-        y.textContent = "-";
+        prevInit.textContent = "Previous Score: - ";
+        prevScore.textContent = "";
     }
 }
 
@@ -141,15 +141,19 @@ function gameOver() {
     
     newCont.appendChild(prevDiv);
 
+    var space2 = document.createElement("div")
+    space2.classList.add("col-md-4");
+
     prevInit = document.createElement("h3");
     prevScore = document.createElement("h3");
     prevInit.classList.add("col-md-6");
-    prevScore.classList.add("col-md-6");
+    prevScore.classList.add("col-md-2");
 
     prevDiv.appendChild(prevInit);
+    prevDiv.appendChild(space2);
     prevDiv.appendChild(prevScore);
 
-    getPreviousScore(prevInit, prevScore);
+    getPreviousScore();
 
     var buttonDiv = document.createElement("div");
     buttonDiv.classList.add("row");
@@ -171,10 +175,10 @@ function gameOver() {
         initDiv.classList.add("row");
         newCont.append(initDiv);
 
-        var space2 = document.createElement("div");
         var space3 = document.createElement("div");
-        space2.classList.add("col-md-1");
+        var space4 = document.createElement("div");
         space3.classList.add("col-md-1");
+        space4.classList.add("col-md-1");
 
         initials = document.createElement("input");
         initials.classList.add("col-md-10");
@@ -185,9 +189,9 @@ function gameOver() {
         initials.setAttribute("maxlength", "3");
         initials.setAttribute("placeholder", "Input Initials");
 
-        initDiv.appendChild(space2);
-        initDiv.appendChild(initials);
         initDiv.appendChild(space3);
+        initDiv.appendChild(initials);
+        initDiv.appendChild(space4);
 
         initials.addEventListener("keyup", setPreviousScore);
         initials.addEventListener("change", setPreviousScore);
@@ -196,10 +200,10 @@ function gameOver() {
         reloadDiv.classList.add("row");
         newCont.append(reloadDiv);
 
-        var space4 = document.createElement("div");
         var space5 = document.createElement("div");
-        space4.classList.add("col-md-1");
+        var space6 = document.createElement("div");
         space5.classList.add("col-md-1");
+        space6.classList.add("col-md-1");
 
         var linkEl = document.createElement("a")
         linkEl.setAttribute("href", "./index.html");
@@ -210,10 +214,10 @@ function gameOver() {
         reloadBut.setAttribute("type", "button");
         reloadBut.textContent = "Replay";
 
-        reloadDiv.appendChild(space4);
+        reloadDiv.appendChild(space5);
         reloadDiv.appendChild(linkEl);
         linkEl.appendChild(reloadBut);
-        reloadDiv.appendChild(space5);
+        reloadDiv.appendChild(space6);
     });
 
 }
