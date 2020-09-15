@@ -16,8 +16,10 @@ var secondsDisplay = document.querySelector("#seconds");
 var totalSeconds = 60;
 var secondsElapsed = 0;
 var interval;
-var initials;
 
+var initials;
+var prevInit;
+var prevScore;
 
 var questions = [
     {
@@ -80,20 +82,20 @@ function checkAnswer(answerChoice, correctAnswer) {
     nextQuestion();
 }
 
-function getPreviousScore() {
+function getPreviousScore(x,y) {
     var scoreData = JSON.parse(localStorage.getItem("scoreData"));
 
     if (scoreData) {
         if (scoreData.previousInitials) {
-            prevName.textContent = "Previous Score: " + scoreData.previousInitials;
+            x.textContent = "Previous Score: " + scoreData.previousInitials;
         }
 
         if (scoreData.previousScore) {
-            prevScore.textContent = scoreData.previousScore;
+            y.textContent = scoreData.previousScore;
         }
     } else {
-        prevName.textContent = "no data";
-        prevScore.textContent = "-";
+        x.textContent = "no data";
+        y.textContent = "-";
     }
 }
 
@@ -121,7 +123,7 @@ function gameOver() {
     newCont.appendChild(scoreDiv);
 
     var finalText = document.createElement("h2");
-    var finalScore = document.createElement("h3");
+    var finalScore = document.createElement("h2");
     finalText.classList.add("col-md-6");
     finalScore.classList.add("col-md-6");
     finalText.textContent = "GAME OVER";
@@ -129,6 +131,21 @@ function gameOver() {
 
     scoreDiv.appendChild(finalText);
     scoreDiv.appendChild(finalScore);
+
+    var prevDiv = document.createElement("div");
+    prevDiv.classList.add("row");
+    
+    newCont.appendChild(prevDiv);
+
+    var prevInit = document.createElement("h3");
+    var prevScore = document.createElement("h3");
+    prevInit.classList.add("col-md-6");
+    prevScore.classList.add("col-md-6");
+
+    prevDiv.appendChild(prevInit);
+    prevDiv.appendChild(prevScore);
+
+    getPreviousScore(prevInit, prevScore);
 
     var buttonDiv = document.createElement("div");
     buttonDiv.classList.add("row");
@@ -141,9 +158,9 @@ function gameOver() {
     buttonEl.textContent = "Submit Score";
 
     buttonDiv.appendChild(buttonEl);
-
+    
+    buttonDiv.addEventListener("click", getPreviousScore);
     buttonDiv.addEventListener("click", function() {
-        
         buttonDiv.remove()
         
         var initDiv = document.createElement("div");
@@ -171,6 +188,28 @@ function gameOver() {
         initials.addEventListener("keyup", setPreviousScore);
         initials.addEventListener("change", setPreviousScore);
 
+        var reloadDiv = document.createElement("div");
+        reloadDiv.classList.add("row");
+        newCont.append(reloadDiv);
+
+        var space3 = document.createElement("div");
+        var space4 = document.createElement("div");
+        space3.classList.add("col-md-3");
+        space4.classList.add("col-md-3");
+
+        var linkEl = document.createElement("a")
+        linkEl.setAttribute("href", "./index.html");
+        linkEl.classList.add("col-md-6");
+
+        var reloadBut = document.createElement("button");
+        reloadBut.classList.add("btn", "btn-success")
+        reloadBut.setAttribute("type", "button");
+        reloadBut.textContent = "Replay";
+
+        reloadDiv.appendChild(space3);
+        reloadDiv.appendChild(linkEl);
+        linkEl.appendChild(reloadBut);
+        reloadDiv.appendChild(space4);
     });
 
 }
