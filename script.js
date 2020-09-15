@@ -39,14 +39,25 @@ var questions = [
         "question":"Which is NOT one of GitHub's major functions?",
         "choices": ["Version Control","Code Editor","Collaboration", "Professional Portfolio"],
         "correct": "Code Editor"
-    }];
+    },
+    {
+        "question":"Inside which HTML element do we put the JavaScript?",
+        "choices": ["<scripting>","<script>","<javascript>", "<js>"],
+        "correct": "<script>"
+    },
+    {
+        "question":"Where is the correct place to insert a JavaScript",
+        "choices": ["The <head> section","The <body> section","Both are correct", "Neither are correct"],
+        "correct": "The <body> section"
+    }
+];
 
 // QUIZ FUNCTIONALITY
 
 function renderQuestion() {
     var activeQuestion = questions[currentQuestion];  
 
-    questionNum.textContent = `Question ${currentQuestion + 1}`;
+    questionNum.textContent = `Question ${currentQuestion + 1} of ${questions.length}`;
     questionEl.textContent = activeQuestion["question"];
     
     for (var i = 0; i < activeQuestion.choices.length; i++) {
@@ -59,7 +70,7 @@ function renderQuestion() {
             answerEl.append(newBut);
         } else {
             answerEl.children[i].textContent = activeQuestion.choices[i];
-        }    
+        }     
     }
     
 }
@@ -166,7 +177,7 @@ function gameOver() {
 
     var buttonEl = document.createElement("button");
     buttonEl.setAttribute("type", "button");
-    buttonEl.classList.add("btn", "btn-warning", "col-md-12");
+    buttonEl.classList.add("btn", "btn-success", "col-md-12");
     buttonEl.setAttribute("href", "");
     buttonEl.textContent = "Submit Score";
 

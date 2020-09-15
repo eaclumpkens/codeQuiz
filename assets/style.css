@@ -59,6 +59,29 @@ p {
     border-color:#EFE2BA;
     color:#EFE2BA;
 }
+
+.btn-success {
+    background: #D79922; 
+    border-color: #D79922;
+    color: #EFE2BA;
+    padding: 1rem;
+}
+
+.btn-success:hover, .btn-success:focus, .btn-success:active {
+    background: #EFE2BA;
+    border-color:#D79922;
+    color:#D79922;
+}
+
+/* INPUT STYLIZATION */
+
+input {
+    border: 0.1rem solid #D79922;
+    background: #EFE2BA;
+    color: #D79922;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+}
  
 
 
