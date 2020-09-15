@@ -17,6 +17,9 @@ var totalSeconds = 60;
 var secondsElapsed = 0;
 var interval;
 
+var answerChoice;
+var correctAnswer;
+
 var initials;
 var prevInit;
 var prevScore;
@@ -70,14 +73,18 @@ function nextQuestion() {
     }
 }
 
-function checkAnswer(answerChoice, correctAnswer) {
+function checkAnswer() {
 
     if (correctAnswer !== answerChoice) {
         totalSeconds -=5;  
+        alert(`Oops - Wrong Answer. The correct answer is ${correctAnswer}.`);
         
     } else {
         score++;
+        alert("Correct - Nice Job!");
+        
     }
+
     console.log(`Score: ${score}`);
     nextQuestion();
 }
@@ -293,8 +300,8 @@ function setMinutes() {
 
 //   EVENT LISTENER
 answerEl.addEventListener("click", function(event) {   
-    var answerChoice = event.target.textContent
-    var correctAnswer = questions[currentQuestion]["correct"];
+    answerChoice = event.target.textContent
+    correctAnswer = questions[currentQuestion]["correct"];
 
     console.log(answerChoice);
     checkAnswer(answerChoice, correctAnswer);
