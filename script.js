@@ -48,7 +48,7 @@ var questions = [
     {
         "question":"Where is the correct place to insert a JavaScript",
         "choices": ["the <head> section","the <body> section","both are correct", "neither are correct"],
-        "correct": "The <body> section"
+        "correct": "both are correct"
     }
 ];
 
