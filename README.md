@@ -5,6 +5,17 @@
 
 ---
 
+##### Images
+
+![landing page](./assets/images/01-screenshot.png)
+![question one](./assets/images/02-screenshot.png)
+![correct alert](./assets/images/03-screenshot.png)
+![incorrect alert](./assets/images/04-screenshot.png)
+![game over](./assets/images/05-screenshot.png)
+![user input & replay button](./assets/images/06-screenshot.png)
+![local storage set](./assets/images/07-screenshot.png)
+![confirmed storage](./assets/images/08-screenshot.png)
+
 ##### Process Summary
 For this project I created a dynamic web app that tests the users knowledge on the front-end programming skills, with the potential to be easily expanded or modified for other quizzes.
 

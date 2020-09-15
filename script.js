@@ -85,7 +85,6 @@ function checkAnswer() {
         
     }
 
-    console.log(`Score: ${score}`);
     nextQuestion();
 }
 
@@ -101,8 +100,7 @@ function getPreviousScore() {
             prevScore.textContent = scoreData.previousScore;
         }
     } else {
-        prevInit.textContent = "Previous Score: - ";
-        prevScore.textContent = "";
+        prevInit.textContent = "Previous Score: ---";
     }
 }
 
@@ -302,8 +300,7 @@ function setMinutes() {
 answerEl.addEventListener("click", function(event) {   
     answerChoice = event.target.textContent
     correctAnswer = questions[currentQuestion]["correct"];
-
-    console.log(answerChoice);
+    
     checkAnswer(answerChoice, correctAnswer);
 })
 
