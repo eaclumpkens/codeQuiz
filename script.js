@@ -47,7 +47,7 @@ var questions = [
     },
     {
         "question":"Where is the correct place to insert a JavaScript",
-        "choices": ["The <head> section","The <body> section","Both are correct", "Neither are correct"],
+        "choices": ["the <head> section","the <body> section","both are correct", "neither are correct"],
         "correct": "The <body> section"
     }
 ];
@@ -71,8 +71,7 @@ function renderQuestion() {
         } else {
             answerEl.children[i].textContent = activeQuestion.choices[i];
         }     
-    }
-    
+    }   
 }
 
 function nextQuestion() {
@@ -85,7 +84,6 @@ function nextQuestion() {
 }
 
 function checkAnswer() {
-
     if (correctAnswer !== answerChoice) {
         totalSeconds -=5;  
         alert(`Oops - Wrong Answer. The correct answer is ${correctAnswer}.`);
@@ -95,7 +93,6 @@ function checkAnswer() {
         alert("Correct - Nice Job!");
         
     }
-
     nextQuestion();
 }
 
