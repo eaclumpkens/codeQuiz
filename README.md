@@ -1,5 +1,5 @@
 
-# Password Generator
+# Code Quiz
 [![License](https://img.shields.io/badge/license-Other-orange)](https://opensource.org/licenses)
 
 ```
