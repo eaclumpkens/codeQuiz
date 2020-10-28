@@ -1,58 +1,73 @@
 
+# Password Generator
+[![License](https://img.shields.io/badge/license-Other-orange)](https://opensource.org/licenses)
 
-# codeQuiz 
-### week 04 homework
+```
+AS A coding bootcamp student
+I WANT to take a timed quiz on JavaScript fundamentals that stores high scores
+SO THAT I can gauge my progress compared to my peers
+```
 
----
+## Table of Contents
 
-##### Images
+[Installation](#installation)
 
-![landing page](./assets/images/01-screenshot.png)
-![question one](./assets/images/02-screenshot.png)
-![correct alert](./assets/images/03-screenshot.png)
-![incorrect alert](./assets/images/04-screenshot.png)
-![game over](./assets/images/05-screenshot.png)
-![user input & replay button](./assets/images/06-screenshot.png)
-![local storage set](./assets/images/07-screenshot.png)
-![confirmed storage](./assets/images/08-screenshot.png)
+[Usage](#usage)
 
-##### Process Summary
-For this project I created a dynamic web app that tests the users knowledge on the front-end programming skills, with the potential to be easily expanded or modified for other quizzes.
+[Contribution](#contribution)
 
-I began by building out the basic html tags I would need in order to initiate the quiz and easily update the clock and render the questions and answers as needed. I based my clock off of the coding from the tomato timer class activity and inputting new html tags from other activties we've worked on.
+[Tests](#tests)
 
-I didn't want to create too many html documents, so I realized there would be a lot of html removal and updating, which just took a lot of patients and fiddling with append and appendChild. After passwordGenerator project, I realized I needed to breakdown my function a lot more. I definitely could condense a few further, but as of now the functionality is there. 
+[Images](#images)
 
-And it's not too ugly `¯\_(ツ)_/¯`
+[Questions](#questions)
 
-##### Basic Functionality
+----
 
-- Build out HTML (index + quiz)
-    - Boilerplate
-    - Link css stylesheet, javascript, bootstrap, google fonts
-    - Create elements to tie javascript to
-- Build out basic CSS
-- Build out Javascript
-    - Began with linking variables to ids and classes
-    - Creating timer functionality
-    - Creating questions array
-        - how to traverse the array and access object keys
-        - best way to store questions and link to html
-    - Answer verification
-        - comparing answer to correct answer
-        - deducting from timer
-        - adding and storing points
-    - Rendering next question
-        - incrementing through questions array
-    - Game Over functionality
-        - game over to initiate when quiz ended or clock runs out
-        - removing questions and rendering final score, previous score, and input for user initials
-- Local Storage Functionality 
-    - setting and retrieving previous scores on button click event
-    - displaying data
-- Troubleshooting
-- Modifying CSS as needed
+<a name="installation"></a>
+### Installation
 
-##### Troubleshooting    
+`git clone` repository
 
-Initials bugs came from simple syntax issues and over complicating the element creation process in Javascript. I broke down functions further and modified the scope of some variables and things started to click. Also, nesting bootstrap attributes requires a looot of attention to detail. But in the end it worked out. I could modify the CSS until I'm blue in the face, and I might, but at the moment *she's working!* And easily modified via the questions object array.
+<a name="usage"></a>
+### Usage
+
+```
+GIVEN I am taking a code quiz
+WHEN I click the start button
+THEN a timer starts and I am presented with a question
+WHEN I answer a question
+THEN I am presented with another question
+WHEN I answer a question incorrectly
+THEN time is subtracted from the clock
+WHEN all questions are answered or the timer reaches 0
+THEN the game is over
+WHEN the game is over
+THEN I can save my initials and score
+```
+
+<a name="contribution"></a>
+### Contribution
+
+Single contribution project 
+
+<a name="tests"></a>
+### Tests
+
+Currently no testing
+
+<a name="images"></a>
+### Images
+##### App Demo
+![app-demo](./assets/images/app-demo.gif)
+
+----
+
+<a name="questions"></a>
+### Questions
+##### Contact Me
+
+Feel free to contact me via GitHub or email with any feedback - thanks for checking out my code!
+
+[GitHub u/eaclumpkens](https://github.com/eaclumpkens)
+eaclumpkens@gmail.com
